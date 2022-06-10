@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { motion, useAnimation, useViewportScroll } from "framer-motion";
+import { motion, useAnimation, useViewportScroll, AnimatePresence } from "framer-motion";
 import {Link, useMatch, PathMatch} from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Nav = styled(motion.nav)`
     display: flex;
@@ -88,6 +88,26 @@ const StyledLink = styled(Link)`
     }
     `;
 
+const Overlay = styled(motion.div)`
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+`;
+
+const DirectoryBox = styled(motion.div)`
+    width: 300px;
+    height: 400px;
+    top: 40px;
+    right: 0;
+    background-color: #faf8f2;
+    position: absolute;
+    border-radius: 7px 0 0 7px;
+    box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
+`;
+
+
 const logoVariants = {
     start:{
         scale: 0,
@@ -110,7 +130,38 @@ const navVariants = {
     },
     scroll: {
         backgroundColor: "rgba(0, 0, 0, 0.7)",
-    }
+    },    
+}
+
+const overlayVariants = {
+    hidden: {opacity: 0},
+    visible: {
+        opacity: 1,
+        transition: {duration: 0.6}
+    },
+    exit: {
+        opacity: 0,
+        transition: {duration: 0.5},
+    },
+}
+
+const directoryVariants = {
+    hidden: {
+        opacity: 0,
+        x: 300,
+    },
+    visible: {
+        opacity: 1,
+        x: 0,
+        type: "tween",
+        transition: {duration: 0.6},
+    },
+    exit: {
+        opacity: 0,
+        x: 300,
+        type: "tween",
+        transition: {duration: 0.5},
+    },
 }
 
 function Header() {
@@ -118,6 +169,8 @@ function Header() {
     const navAnimation = useAnimation();
     const homeMatch = useMatch("/");
     const aboutMatch = useMatch("/about");
+    const [clicked, setClicked] = useState(false);
+    const toggle = () => setClicked(prev => !prev);
     useEffect(() => {
         scrollY.onChange(() => {
             if(scrollY.get() > 80){
@@ -191,11 +244,33 @@ function Header() {
             </Col>
             <Col>
                 <Bars 
+                    onClick={toggle}
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 448 512">
                     <motion.path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/>
                 </Bars>
             </Col>
+            <AnimatePresence>
+                {clicked? 
+                    <>
+                    <Overlay 
+                        onClick={toggle}
+                        variants={overlayVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    /> 
+                    <DirectoryBox
+                            variants={directoryVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                    >
+
+                    </DirectoryBox>          
+                    </>
+                : null}
+            </AnimatePresence>
         </Nav>
     );
 }

@@ -3,7 +3,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import Images from "../Img/indexImg";
 import { useState } from "react";
 
-const Wrapper = styled.div `
+const Wrapper = styled(motion.div) `
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -65,8 +65,12 @@ const Photo = styled(motion.div)`
     width: 280px;
     height: 330px;
     overflow: hidden;
-    background-color: red;
     border-radius: 10px;
+    box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
+`;
+
+const Img = styled(motion.img)`
+    height: 330px;
 `;
 
 const DetailBox = styled.div`
@@ -75,7 +79,7 @@ const DetailBox = styled.div`
 `;
 
 const DetailTop = styled.div`
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
     
     align-items: flex-end;
@@ -101,8 +105,13 @@ const GridBox = styled.div`
     align-items: center;
     height: 200px;
     color: ${props => props.theme.gray.darker};
-    margin-top: 30px
+    margin-top: 40px
 `;
+
+const wrapperVariants ={
+    hidden:{opacity: 0,},
+    visible:{opacity: 1, transition: {duration: 0.8}},
+}
 
 const Date = styled.div`
 
@@ -118,7 +127,11 @@ const B = styled.span`
 
 function About() {
     return (
-        <Wrapper>
+        <Wrapper
+            variants = {wrapperVariants}
+            initial = "hidden"
+            animate = "visible"
+        >
             <AboutBox>
                 <Name>Lucy Nam 남화정</Name>
                 <AboutMe>
@@ -132,7 +145,7 @@ function About() {
             <InfoBox>
                 <PhotoBox>
                     <Photo>
-
+                        <Img src={Images.nyuImg} style={{x:-70}} />
                     </Photo>
                 </PhotoBox>
                 <DetailBox>
@@ -152,7 +165,7 @@ function About() {
                         <Detail><B>Seoul Women’s University</B>, Korea <br/>BA in Painting
 </Detail>
                         <Date>2000</Date>
-                        <Detail><B>RMIT University</B>, Australia <br/>Fine Arts Exchange student program </Detail>
+                        <Detail><B>RMIT University</B>, Australia <br/>1 year Exchange program in Fine Arts </Detail>
                     </GridBox>
                 </DetailBox>
             </InfoBox>
@@ -160,7 +173,7 @@ function About() {
             <InfoBox>
                 <PhotoBox>
                         <Photo>
-                            
+                            <Img src={Images.seminarImg} style={{x:-265, height: "400px"}} />
                         </Photo>
                     </PhotoBox>
                     <DetailBox>
