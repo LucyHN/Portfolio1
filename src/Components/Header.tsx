@@ -97,6 +97,8 @@ const Overlay = styled(motion.div)`
 `;
 
 const DirectoryBox = styled(motion.div)`
+    display: flex;
+    justify-content: center;
     width: 300px;
     height: 400px;
     top: 40px;
@@ -105,6 +107,48 @@ const DirectoryBox = styled(motion.div)`
     position: absolute;
     border-radius: 7px 0 0 7px;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
+`;
+
+const DirectoryUl = styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const DirectoryLi = styled.li`
+    font-size: 20px;
+    font-weight: 500;
+    list-style-type: none;
+    margin: 25px;
+    color: ${props => props.theme.gray.darker};
+    &:hover {
+        color: ${props => props.theme.black.lighter};
+    }
+`;
+
+const DirectoryLink = styled(Link)`
+    text-decoration: none;
+    color: ${props => props.theme.gray.darker};
+    &:hover {
+        color: ${props => props.theme.black.lighter};
+    }
+`;
+
+const DirectoryA =styled.a`
+    text-decoration: none;
+    color: ${props => props.theme.gray.darker};
+    &:hover {
+        color: ${props => props.theme.black.lighter};
+    }
+`;
+
+const DirectoryIcon = styled.svg`
+    width: 23px;
+    fill: ${props => props.theme.gray.darker};
+    &:hover {
+        fill: ${props => props.theme.black.lighter};
+    }
 `;
 
 
@@ -137,7 +181,7 @@ const overlayVariants = {
     hidden: {opacity: 0},
     visible: {
         opacity: 1,
-        transition: {duration: 0.6}
+        transition: {duration: 0.6},
     },
     exit: {
         opacity: 0,
@@ -266,7 +310,18 @@ function Header() {
                             animate="visible"
                             exit="exit"
                     >
-
+                        <DirectoryUl>
+                            <DirectoryLi><DirectoryLink to="/">Home</DirectoryLink></DirectoryLi>
+                            <DirectoryLi><DirectoryLink to="/about">About</DirectoryLink></DirectoryLi>
+                            <DirectoryLi><DirectoryA href="mailto:lucy.h.nam@gmail.com">e-mail</DirectoryA></DirectoryLi>
+                            <DirectoryLi>
+                                    <DirectoryA href="https://www.linkedin.com/in/lucy-hwajoung-nam-360231139/" target="_blank">
+                                    <DirectoryIcon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+                                    </DirectoryIcon>
+                                </DirectoryA>
+                            </DirectoryLi>
+                        </DirectoryUl>
                     </DirectoryBox>          
                     </>
                 : null}

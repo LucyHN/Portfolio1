@@ -17,6 +17,9 @@ const AboutBox = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media (max-width: 890px) {
+        width: 90%;
+    };
 `;
 
 const Name = styled.h1`
@@ -32,6 +35,9 @@ const AboutMe = styled.p`
     font-size: 17px;
     text-align: center;
     color: gray;
+    @media (max-width: 890px) {
+        font-size: 15px;
+    };
 `;
 
 const Strong = styled.span`
@@ -52,6 +58,10 @@ const InfoBox = styled.div`
     border-radius: 10px;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 70px;
+    @media (max-width: 890px) {
+        width: 500px;
+        flex-direction: column;
+    }
 `;
 
 const PhotoBox = styled.div`
@@ -59,6 +69,10 @@ const PhotoBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 890px) {
+        width: 400px;
+    }
+   
 `;
 
 const Photo = styled(motion.div)`
@@ -67,7 +81,10 @@ const Photo = styled(motion.div)`
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
-`;
+    @media (max-width: 890px) {
+        width: 400px;
+    }
+    `;
 
 const Img = styled(motion.img)`
     height: 330px;
@@ -159,10 +176,10 @@ function About() {
                     </DetailTop>
                     <GridBox>
                         <Date>2002-2004</Date>
-                        <Detail><B>New York University</B>, USA <br/>MA in Studio Arts
+                        <Detail><B>New York University</B>, USA <br/>Master of Arts in Studio Arts
 </Detail>
                         <Date>1997-2001</Date>
-                        <Detail><B>Seoul Women’s University</B>, Korea <br/>BA in Painting
+                        <Detail><B>Seoul Women’s University</B>, Korea <br/>Bachelor of Arts in Painting
 </Detail>
                         <Date>2000</Date>
                         <Detail><B>RMIT University</B>, Australia <br/>1 year Exchange program in Fine Arts </Detail>
