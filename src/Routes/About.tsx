@@ -17,9 +17,13 @@ const AboutBox = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media (max-width: 890px) {
-        width: 90%;
-    };
+        @media (max-width: 890px) {
+            width: 85%;
+            margin-bottom: 75px;
+        };
+        @media (max-width: 400px) {
+            margin-bottom: 50px; 
+        };
 `;
 
 const Name = styled.h1`
@@ -28,6 +32,12 @@ const Name = styled.h1`
     color: gray;
     margin-bottom: 50px;
     text-align: center;
+        @media (max-width: 510px) {
+            font-size: 25px;
+        }
+        @media (max-width: 400px) {
+            font-size: 25px;            
+        };
 `;
 
 const AboutMe = styled.p`
@@ -35,9 +45,12 @@ const AboutMe = styled.p`
     font-size: 17px;
     text-align: center;
     color: gray;
-    @media (max-width: 890px) {
-        font-size: 15px;
-    };
+        @media (max-width: 890px) {
+            font-size: 15px;
+        };
+        @media (max-width: 400px) {
+            font-size: 14px;
+        };
 `;
 
 const Strong = styled.span`
@@ -48,20 +61,34 @@ const StrongP = styled.p`
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+        @media (max-width: 400px) {
+            font-size: 15px;
+        };
 `;
 
 const InfoBox = styled.div`
     display: flex;
     width: 850px;
     height: 400px; 
-    background-color: ;
     border-radius: 10px;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 70px;
-    @media (max-width: 890px) {
-        width: 500px;
-        flex-direction: column;
-    }
+        @media (max-width: 890px) {
+            width: 500px;
+            height: 650px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        };
+
+        @media (max-width: 510px) {
+            box-shadow: none;
+        };
+        @media (max-width: 400px) {
+            margin-bottom: 50px;
+        }
+
+
 `;
 
 const PhotoBox = styled.div`
@@ -83,23 +110,50 @@ const Photo = styled(motion.div)`
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.2), 0 3px 15px rgba(0, 0, 0, 0.2);
     @media (max-width: 890px) {
         width: 400px;
+        height: 300px;
+    };
+
+    @media (max-width: 510px) {
+        width: 100vw;
+        border-radius: 0px;
+        box-shadow: none;
     }
     `;
 
 const Img = styled(motion.img)`
     height: 330px;
-`;
+        @media (max-width: 400px) {
+            width: ;
+        }
+`;    
 
 const DetailBox = styled.div`
     width: 500px;
-    
+        @media (max-width: 890px) {
+            display: flex;
+            flex-direction: column;
+        };
+        @media (max-width: 510px) {
+            width: 100vw;
+            align-items: center;
+        }
 `;
 
 const DetailTop = styled.div`
-    margin-top: 40px;
+    margin-top: 60px;
+    width: ;
     display: flex;
-    
     align-items: flex-end;
+        @media (max-width: 890px) {
+            justify-content: flex-start;
+            margin-left: 40px;
+            margin-top: 50px;
+        };
+        @media (max-width: 510px) {
+            align-items: center;
+            margin-left: 0;
+            margin-top: 40px;
+        };
 `;
 
 const Icon = styled(motion.svg)`
@@ -112,7 +166,17 @@ const P = styled.h2`
     font-weight: 700;
     color: ${props => props.theme.gray.darker};
     margin-left: 15px;
+        @media (max-width: 510px) {
+            
+        }
 
+`;
+
+const GridBoxWrap = styled.div`
+    @media (max-width: 890px) {
+        display: flex;
+        justify-content: center;
+    }
 `;
 
 const GridBox = styled.div`
@@ -122,8 +186,27 @@ const GridBox = styled.div`
     align-items: center;
     height: 200px;
     color: ${props => props.theme.gray.darker};
-    margin-top: 40px
+    margin-top: 40px;
+        @media (max-width: 890px) {
+            margin-top: 30px;
+            font-size: 15px;
+            width: 400px;
+            height: 150px;
+            grid-gap: 10px;
+        };
+        @media (max-width: 510px) {
+            grid-template: repeat(6, 1fr) / 1fr;
+            width: 100vw;
+            height: 220px;
+            justify-items: center;
+            align-items: center;
+            font-size: 15px;
+            grid-gap: 0;
+            margin-top: 10px;
+            text-align: center;
+        };  
 `;
+
 
 const wrapperVariants ={
     hidden:{opacity: 0,},
@@ -131,7 +214,9 @@ const wrapperVariants ={
 }
 
 const Date = styled.div`
-
+    @media (max-width: 510px) {
+        margin-top: 15px;
+    }
 `;
 
 const Detail = styled.div`
@@ -162,7 +247,7 @@ function About() {
             <InfoBox>
                 <PhotoBox>
                     <Photo>
-                        <Img src={Images.nyuImg} style={{x:-70}} />
+                        <Img src={Images.nyuImg} style={{x: -70, height: "330px",}} />
                     </Photo>
                 </PhotoBox>
                 <DetailBox>
@@ -174,23 +259,25 @@ function About() {
                         </Icon>  
                         <P>Education</P>
                     </DetailTop>
-                    <GridBox>
-                        <Date>2002-2004</Date>
-                        <Detail><B>New York University</B>, USA <br/>Master of Arts in Studio Arts
-</Detail>
-                        <Date>1997-2001</Date>
-                        <Detail><B>Seoul Women’s University</B>, Korea <br/>Bachelor of Arts in Painting
-</Detail>
-                        <Date>2000</Date>
-                        <Detail><B>RMIT University</B>, Australia <br/>1 year Exchange program in Fine Arts </Detail>
-                    </GridBox>
+                    <GridBoxWrap>
+                        <GridBox>
+                            <Date>2002-2004</Date>
+                            <Detail><B>New York University</B>, USA <br/>Master of Arts in Studio Arts
+                            </Detail>
+                            <Date>1997-2001</Date>
+                            <Detail><B>Seoul Women’s University</B>, Korea <br/>Bachelor of Arts in Painting
+                            </Detail>
+                            <Date>2000</Date>
+                            <Detail><B>RMIT University</B>, Australia <br/>1 year Exchange program in Fine Arts </Detail>
+                        </GridBox>
+                    </GridBoxWrap>
                 </DetailBox>
             </InfoBox>
 
             <InfoBox>
                 <PhotoBox>
                         <Photo>
-                            <Img src={Images.seminarImg} style={{x:-265, height: "400px"}} />
+                            <Img src={Images.seminarImg} />
                         </Photo>
                     </PhotoBox>
                     <DetailBox>
@@ -203,6 +290,7 @@ function About() {
                             </Icon>
                             <P>Work</P>
                         </DetailTop>
+                        <GridBoxWrap>
                         <GridBox>
                             <Date>2011-2019</Date>
                             <Detail><B>Mary Kay Korea</B>, Korea <br/>Communication Marketing Sr. Specialist <br/>Event Coordinator ~ Supervisor</Detail>
@@ -210,8 +298,8 @@ function About() {
                             <Detail><B>Ananti Club Seoul</B>, Korea<br/>Event & Marketing Manager </Detail>
                             <Date>2006-2010</Date>
                             <Detail><B>W Seoul–Walkerhill Hotel</B>, Korea<br/>Event Coordinator</Detail>
-
                         </GridBox>
+                        </GridBoxWrap>
                     </DetailBox>
             </InfoBox>
 

@@ -14,11 +14,17 @@ const BottomBox = styled.div`
     padding-top: 40px;
     width: 90%;
     border-top: 1.5px solid ${props => props.theme.gray.lighter};
+        @media(max-width: 500px) {
+            margin-top: 50px;
+        }
 `;
 
 const BottomCopy = styled.p`
     color: ${props => props.theme.gray.darker};
     font-size: 14px;
+        @media (max-width: 510px){
+            font-size: 13px;
+        }
 `;
 
 function Footer() {

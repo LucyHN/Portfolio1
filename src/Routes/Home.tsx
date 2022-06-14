@@ -95,6 +95,9 @@ const Grid = styled(motion.div) `
     justify-content: center;
     align-items: center;
     justify-items: center;
+        @media (max-width: 700px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
 `;
 
 const SkillBox = styled(motion.div)`
@@ -133,6 +136,10 @@ const InfoBox = styled(motion.div)`
     left: 0;
     right: 0;
     margin: 0 auto;
+        @media (max-width: 400px) {
+            width: 300px;
+            height: 300px;
+        }
 `;
 
 const Info = styled(motion.div)`
@@ -141,6 +148,9 @@ const Info = styled(motion.div)`
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+        @media (max-width: 400px) {
+            
+        }
 `;
 
 const H4 = styled(motion.h4)`
@@ -154,12 +164,21 @@ const ListBox = styled.div`
     justify-content: center;
     height: 220px;
     width: 350px;
+        @media (max-width: 400px) {
+            width: 300px;
+            height: 200px;
+        }
 `;
 
 const ListP = styled.p`
     margin-top: 10px;
     margin-left: 30px;
-    color: ${props => props.theme.gray.lighter}
+    color: ${props => props.theme.gray.lighter};
+        @media (max-width: 400px) {
+            font-size: 14px;
+            text-align: center;
+            margin: 0;
+        }
 `;
 
 const Ul = styled.ul`
@@ -172,6 +191,11 @@ const Li = styled.li`
     font-size: 15px;
     margin-bottom: 10px;
     list-style-type: square;
+        @media (max-width: 400px) {
+            font-size: 13px;
+            text-align: center;
+            list-style-type: none;
+        }
 `;
 
 const LightGray = styled.span`
@@ -184,6 +208,11 @@ const TitleBox = styled(motion.div)`
     display: flex;
     justify-content: space-between;
     align-items: center;
+        @media (max-width: 800px) {
+            flex-direction: column;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
 `;
 
 const QuoteSvg = styled(motion.svg)`
@@ -191,15 +220,23 @@ const QuoteSvg = styled(motion.svg)`
     width: 35px;
     margin-right: 15px;
     margin-left: 15px;
+        @media (max-width: 800px) {
+            width: 25px;
+            margin: 15px;
+        }
 `;
 
-const Title = styled(motion.p)`
+const Title = styled(motion.div)`
     font-size: 25px;
     font-weight: 900;
     color: rgba(235, 12, 19, 0.4);
     margin-right: 10px;
     margin-left: 10px;
     font-style: italic;
+        @media (max-width: 800px) {
+            font-size: 25px;
+            margin: 8px;
+        }
 `;
 
 
@@ -226,8 +263,8 @@ const photoVariants = {
 function Home () {
     
     const [visible, setVisible] = useState(1);
-    const next = () => setVisible(prev => (prev === 3 ? 1 : prev + 1));
-    const back = () => setVisible(prev => (prev === 1 ? 3 : prev - 1));
+    const next = () => setVisible(prev => (prev === 7 ? 1 : prev + 1));
+    const back = () => setVisible(prev => (prev === 1 ? 7 : prev - 1));
     const [id, setId] = useState<string | null>(null);
     const [clicked, setClicked] = useState(false);
     const toggle = () => setClicked((prev) => !prev);  
@@ -255,11 +292,19 @@ function Home () {
                             {visible === 1 && <><Img src={Images.careerImg_1} style={{height: "280px"}} /></>} 
                             {visible === 2 && <Img src={Images.careerImg_2} style={{height: "280px"}} />} 
                             {visible === 3 && <Img src={Images.careerImg_3} style={{height: "280px", x: -50}} />} 
+                            {visible === 4 && <Img src={Images.careerImg_4} style={{height: "280px", x: -30}} />} 
+                            {visible === 5 && <Img src={Images.careerImg_5} style={{height: "280px", x: -50, y: -20}} />} 
+                            {visible === 6 && <Img src={Images.careerImg_7} style={{width: "280px", y: -30}} />} 
+                            {visible === 7 && <Img src={Images.careerImg_8} style={{height: "310px", x: -185}} />} 
                         </Photo>
                         <PhotoInfo variants={photoVariants} initial="hidden" animate="visible" exit="exit">
                             { visible ===1 && "Event Planner @Mary Kay"} 
                             { visible ===2 && "Event Planner @Mary Kay"} 
-                            { visible ===3 && "Comm. Marketer @Mary Kay"}   
+                            { visible ===3 && "Comm. Marketer @Mary Kay"}
+                            { visible ===4 && "Event Planner & Marketer @Ananti"}
+                            { visible ===5 && "Event Planner @W Hotel"}
+                            { visible ===6 && "Event Planner @W Hotel"}
+                            { visible ===7 && "Art Exhibition @New York"}    
                         </PhotoInfo>
                     </PhotoBox>
                 </AnimatePresence>
