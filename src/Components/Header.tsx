@@ -279,7 +279,7 @@ function Header() {
                     </Item>
                         
                     <Item>
-                        <StyledLink to="/about">
+                        <StyledLink to="/about" >
                             About{aboutMatch && <Circle layoutId="circle" />}
                         </StyledLink>
                     </Item>
@@ -311,8 +311,8 @@ function Header() {
                             exit="exit"
                     >
                         <DirectoryUl>
-                            <DirectoryLi><DirectoryLink to="/">Home</DirectoryLink></DirectoryLi>
-                            <DirectoryLi><DirectoryLink to="/about">About</DirectoryLink></DirectoryLi>
+                            <DirectoryLi><DirectoryLink to="/" >Home</DirectoryLink></DirectoryLi>
+                            <DirectoryLi><DirectoryLink to="/about" >About</DirectoryLink></DirectoryLi>
                             <DirectoryLi><DirectoryA href="mailto:lucy.h.nam@gmail.com">e-mail</DirectoryA></DirectoryLi>
                             <DirectoryLi>
                                     <DirectoryA href="https://www.linkedin.com/in/lucy-hwajoung-nam-360231139/" target="_blank">

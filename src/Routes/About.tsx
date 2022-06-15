@@ -46,10 +46,10 @@ const AboutMe = styled.p`
     text-align: center;
     color: gray;
         @media (max-width: 890px) {
-            font-size: 15px;
+            font-size: 16px;
         };
         @media (max-width: 400px) {
-            font-size: 14px;
+            font-size: ;
         };
 `;
 
@@ -62,7 +62,7 @@ const StrongP = styled.p`
     text-align: center;
     font-weight: bold;
         @media (max-width: 400px) {
-            font-size: 15px;
+            font-size: 16px;
         };
 `;
 
@@ -189,7 +189,7 @@ const GridBox = styled.div`
     margin-top: 40px;
         @media (max-width: 890px) {
             margin-top: 30px;
-            font-size: 15px;
+            font-size: 16px;
             width: 400px;
             height: 150px;
             grid-gap: 10px;
@@ -200,7 +200,7 @@ const GridBox = styled.div`
             height: 220px;
             justify-items: center;
             align-items: center;
-            font-size: 15px;
+            font-size: ;
             grid-gap: 0;
             margin-top: 10px;
             text-align: center;
@@ -293,7 +293,7 @@ function About() {
                         <GridBoxWrap>
                         <GridBox>
                             <Date>2011-2019</Date>
-                            <Detail><B>Mary Kay Korea</B>, Korea <br/>Communication Marketing Sr. Specialist <br/>Event Coordinator ~ Supervisor</Detail>
+                            <Detail><B>Mary Kay Korea</B>, Korea <br/>Comm. Marketing Sr. Specialist <br/>Event Coordinator ~ Supervisor</Detail>
                             <Date>2010</Date>
                             <Detail><B>Ananti Club Seoul</B>, Korea<br/>Event & Marketing Manager </Detail>
                             <Date>2006-2010</Date>
